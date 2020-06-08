@@ -142,6 +142,16 @@ Make Predictions
     print(f"Loaded Model: \n Total: {test_total} \n Correct: {test_correct} \n Wrong: {test_wrong}")
     ```
 
+## Output
+
+```markdown
+Accuracy: 76.953125
+Loaded Model:
+ Total: 768
+ Correct: 591
+ Wrong: 177
+```
+
 ## Project status
 
 Project has been completed successfully
