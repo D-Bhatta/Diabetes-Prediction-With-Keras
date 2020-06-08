@@ -4,13 +4,13 @@ Diabetes prediction with keras, by following the [tutorial](https://machinelearn
 
 ## Sections
 
-Load Data
-Define Keras Model
-Compile Keras Model
-Fit Keras Model
-Evaluate Keras Model
-Tie It All Together
-Make Predictions
+1. Load Data
+2. Define Keras Model
+3. Compile Keras Model
+4. Fit Keras Model
+5. Evaluate Keras Model
+6. Tie It All Together
+7. Make Predictions
 
 ## Notes
 
