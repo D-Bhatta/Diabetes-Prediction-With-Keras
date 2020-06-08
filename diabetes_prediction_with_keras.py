@@ -39,34 +39,34 @@ print(tf.__version__)
 
 """Load the dataset"""
 
-dataset = loadtxt('pima-indians-diabetes.data.csv', delimiter=',')
-x = dataset[:,0:8]
-y = dataset[:,8]
+dataset = loadtxt("pima-indians-diabetes.data.csv", delimiter=",")
+x = dataset[:, 0:8]
+y = dataset[:, 8]
 
 """Define the model"""
 
 model = Sequential()
-model.add(Dense(12,input_dim=8, activation='relu'))
-model.add(Dense(8, activation='relu'))
-model.add(Dense(1, activation='sigmoid'))
+model.add(Dense(12, input_dim=8, activation="relu"))
+model.add(Dense(8, activation="relu"))
+model.add(Dense(1, activation="sigmoid"))
 
 """Compile the model"""
 
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
 
 """Train the model for 150 epochs with 10-k batches"""
 
-model.fit(x,y, epochs=150, batch_size=10)
+model.fit(x, y, epochs=150, batch_size=10)
 
 """Evaluate model accuracy"""
 
-_, accuracy = model.evaluate(x,y)
-print(f'Accuracy: {accuracy*100}')
+_, accuracy = model.evaluate(x, y)
+print(f"Accuracy: {accuracy*100}")
 
 """Make predictions using model"""
 
 y_pred = model.predict(x)
-y_pred = [1 if i>=0.5 else 0 for i in y_pred]
+y_pred = [1 if i >= 0.5 else 0 for i in y_pred]
 
 """Calculate statistics"""
 
@@ -74,34 +74,36 @@ total = 0
 correct = 0
 wrong = 0
 for i in range(len(y_pred)):
-  total = total + 1
-  if y_pred[i] == y[i]:
-    correct = correct + 1
-  else:
-    wrong = wrong + 1
+    total = total + 1
+    if y_pred[i] == y[i]:
+        correct = correct + 1
+    else:
+        wrong = wrong + 1
 
 print(f" Total: {total} \n Correct: {correct} \n Wrong: {wrong}")
 
 """Pipeline model"""
 
-dump(model, 'model.sav')
+dump(model, "model.sav")
 
-test_model = load('model.sav')
+test_model = load("model.sav")
 
-_, accuracy = test_model.evaluate(x,y)
-print(f'Accuracy: {accuracy*100}')
+_, accuracy = test_model.evaluate(x, y)
+print(f"Accuracy: {accuracy*100}")
 
 test_y_pred = test_model.predict(x)
-test_y_pred = [1 if i>=0.5 else 0 for i in test_y_pred]
+test_y_pred = [1 if i >= 0.5 else 0 for i in test_y_pred]
 
 test_total = 0
 test_correct = 0
 test_wrong = 0
 for i in range(len(test_y_pred)):
-  test_total = test_total + 1
-  if test_y_pred[i] == y[i]:
-    test_correct = test_correct + 1
-  else:
-    test_wrong = test_wrong + 1
+    test_total = test_total + 1
+    if test_y_pred[i] == y[i]:
+        test_correct = test_correct + 1
+    else:
+        test_wrong = test_wrong + 1
 
-print(f"Loaded Model: \n Total: {test_total} \n Correct: {test_correct} \n Wrong: {test_wrong}")
+print(
+    f"Loaded Model: \n Total: {test_total} \n Correct: {test_correct} \n Wrong: {test_wrong}"
+)
